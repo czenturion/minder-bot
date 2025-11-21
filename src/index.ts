@@ -1,4 +1,4 @@
-import { createBot, launchBot } from './bot/bot.ts';
+import { createBot, launchBot } from './bot/bot';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 

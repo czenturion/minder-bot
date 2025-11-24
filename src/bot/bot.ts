@@ -1,6 +1,6 @@
 import { Telegraf, Markup, session, Context } from 'telegraf';
-import { findOrCreateUser, getUserStats } from '../services/userService.js';
-import { IUserDocument } from '../models/User.js';
+import { findOrCreateUser, getUserStats } from '../services/userService';
+import { IUserDocument } from '../models/User';
 
 interface SessionData {
   creatingPost?: boolean;
@@ -58,9 +58,10 @@ const setupHandlers = (bot: Telegraf<BotContext>) => {
   bot.on(['photo', 'video', 'document'], handleMedia);
 };
 
-const handleStart = async (ctx: BotContext) => {
+const handleStart = async (ctx: BotContext): Promise<void> => {
   if (!ctx.user) {
-    return ctx.reply('Ошибка регистрации. Попробуйте позже.');
+    await ctx.reply('Ошибка регистрации. Попробуйте позже.');
+    return;
   }
 
   await ctx.reply(
@@ -79,7 +80,7 @@ const handleStart = async (ctx: BotContext) => {
   );
 };
 
-const handleHelp = (ctx: BotContext) => {
+const handleHelp = (ctx: BotContext): void => {
   ctx.reply(
     '📖 <b>Помощь по Minder Bot</b>\n\n' +
       '<b>Основные команды:</b>\n' +
@@ -100,9 +101,10 @@ const handleHelp = (ctx: BotContext) => {
   );
 };
 
-const handleProfile = async (ctx: BotContext) => {
+const handleProfile = async (ctx: BotContext): Promise<void> => {
   if (!ctx.user) {
-    return ctx.reply('❌ Пользователь не найден.');
+    await ctx.reply('❌ Пользователь не найден.');
+    return;
   }
 
   try {

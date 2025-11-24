@@ -1,10 +1,11 @@
-import Post, { IPostDocument } from '../models/Post.js';
-import { Types } from 'mongoose';
+import { db } from '../database/database';
 
-interface Media {
-  fileId: string;
-  type: 'photo' | 'video' | 'document';
-}
+export interface TPost {}
+
+// interface Media {
+//   fileId: string;
+//   type: 'photo' | 'video' | 'document';
+// }
 
 export const createPost = async (
   content: string,

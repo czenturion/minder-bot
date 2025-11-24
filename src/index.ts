@@ -1,5 +1,4 @@
 import { createBot, launchBot } from './bot/bot';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -18,7 +17,7 @@ const main = async (): Promise<void> => {
 
     // Подключение к MongoDB
     console.log('📦 Подключаемся к MongoDB...');
-    await mongoose.connect(process.env.MONGODB_URI);
+
     console.log('✅ MongoDB подключена успешно');
 
     // Запуск бота
